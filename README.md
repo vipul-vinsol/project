@@ -1,0 +1,3 @@
+# Rails Project
+
+**Closed Source**
