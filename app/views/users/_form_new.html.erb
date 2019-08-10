@@ -10,6 +10,20 @@
     </div>
   <% end %>
 
+  <%= form.fields_for :detail do |detail| %>
+    <div class="avatar_upload">
+      <% if user.detail.avatar.attached? && user.detail.avatar.image? %>
+        <%= image_tag user.detail.avatar.variant(resize: "130x130") %>
+      <% end %>
+      <div class="overlay_on_avatar_upload"> 
+        Upload Image
+        <div class="upload_button">
+          <%= detail.file_field :avatar %>
+        </div> 
+      </div>
+    </div>
+  <% end %>
+  
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -20,7 +34,7 @@
     <%= form.text_field :email %>
   </div>
 
-  <div class="field">
+    <div class="field">
     <%= form.label :password %>
     <%= form.password_field :password %>
   </div>
