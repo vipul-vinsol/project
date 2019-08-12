@@ -44,6 +44,11 @@
     <%= form.password_field :password_confirmation %>
   </div>
 
+  <div class="field">
+    <%= form.label :interests %>
+    <%= form.select :interests, all_topics, { include_blank: false }, { multiple: true } %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @all_topics = Topic.all.map { |topic| [topic.name, topic.id] }
     @user.build_detail
   end
 
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.activation_token = SecureRandom.urlsafe_base64.to_s
     if @user.save
+      @user.assign_interests(params[:user][:interests])
       UserMailer.user_activation_email(@user).deliver_now
       redirect_to login_path, 
           notice: 'User was successfully created. Please confirm with email to activate user'
@@ -62,7 +64,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation,
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :interests,
         detail_attributes: [:avatar])
     end
 end
