@@ -10,20 +10,14 @@
     </div>
   <% end %>
 
-  <%= form.fields_for :detail do |detail| %>
-    <div class="avatar_upload">
-      <% if user.detail.avatar.attached? && user.detail.avatar.image? %>
-        <%= image_tag user.detail.avatar.variant(resize: "130x130") %>
-      <% end %>
-      <div class="overlay_on_avatar_upload"> 
-        Upload Image
-        <div class="upload_button">
-          <%= detail.file_field :avatar %>
-        </div> 
-      </div>
-    </div>
-  <% end %>
-  
+  <div class="field">
+    <%= form.fields_for :detail do |detail| %>
+      <%= label_tag :avatar, "Choose a profile picture"  %>
+      <%= image_tag "", id: "avatar-tag", class: "avatar_image" %>
+      <%= detail.file_field :avatar, id: "avatar" %>
+    <% end %>
+  </div>
+
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -46,7 +40,8 @@
 
   <div class="field">
     <%= form.label :interests %>
-    <%= form.select :interests, all_topics, { include_blank: false }, { multiple: true } %>
+    <%= form.select :interests, all_topics, { include_blank: false }, { multiple: true,  
+        class: "select-interests" } %>
   </div>
 
   <div class="actions">

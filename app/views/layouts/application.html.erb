@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsProject</title>
+    <title>Rails Project</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,15 +10,24 @@
   </head>
 
   <body>
-    <nav>
-      <% if logged_in? %>
-        <%= link_to current_user.name, edit_user_path(current_user.id) %>
-        <%= link_to "Log Out", logout_path %>
-      <% else %>
-        <%= link_to "Login", login_path %> |
-        <%= link_to "Sign Up", signup_path %>
-      <% end %>
-    </nav>
-    <%= yield %>
+    <div class="container">
+      <nav class="navbar">
+        <div class="nav-left-section">
+          <%= link_to "HOME", root_path %>
+        </div>
+        <div class="nav-right-section">
+          <% if logged_in? %>
+            <%= link_to current_user.name, edit_user_path(current_user.id), class: 'user-name' %>
+            <%= link_to "Log Out", logout_path %>
+          <% else %>
+            <%= link_to "Login", login_path %>
+            <%= link_to "Sign Up", signup_path %>
+          <% end %>
+        </div>
+      </nav>
+      <div class="content-container">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

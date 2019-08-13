@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :interests
   has_many :topics, through: :interests
+  has_many :answers
 
   accepts_nested_attributes_for :detail, allow_destroy: true, update_only: true,
                                 reject_if: :all_blank

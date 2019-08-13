@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Editing User</h1>
-
-<%= render 'form_edit', user: @user %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class="user-profile">
+  <h3>User Profile</h3>
+  <%= render 'form_edit', user: @user %>
+</div>

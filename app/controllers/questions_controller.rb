@@ -7,10 +7,12 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @answer = Answer.new
   end
 
   def new
     @question = Question.new
+    @all_topics = Topic.all.map { |topic| [topic.name, topic.id] }
   end
 
   def edit
@@ -19,6 +21,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params.merge(user_id: current_user.id))
     if @question.save
+      @question.assign_tags(params[:question][:tags])
       redirect_to @question, notice: 'Question was successfully created.'
     else
       render :new
@@ -44,6 +47,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:title, :content)
+      params.require(:question).permit(:title, :content, :attachment, :tags)
     end
 end
