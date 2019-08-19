@@ -25,9 +25,17 @@
           <% end %>
         </div>
       </nav>
+
       <div class="content-container">
+      
+        <% flash.each do |key, value| %>
+            <p id='<%= key %>'><%= value %></p>
+        <% end %>
+
         <%= yield %>
+      
       </div>
+
     </div>
   </body>
 </html>
