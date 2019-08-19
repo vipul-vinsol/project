@@ -112,3 +112,19 @@
   }
   
 }
+
+.custom-answer-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  .answer-field-container {
+    width: 75%;
+  }
+
+  textarea {
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+  }
+}

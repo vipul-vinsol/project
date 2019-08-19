@@ -1,4 +1,4 @@
-<%= form_with(model: answer, local: true) do |form| %>
+<%= form_with(model: answer, local: true, class: 'custom-answer-form') do |form| %>
   <% if answer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
@@ -14,12 +14,11 @@
     <%= form.hidden_field :question_id, value: question.id %>
   </div>
 
-  <div class="field">
-    <%= form.label :content, "Answer the question" %>
-    <%= form.text_area :content %>
+  <div class="field answer-field-container">
+    <%= form.text_area :content, placeholder: 'Write your answers here' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Answer!!" %>
   </div>
 <% end %>

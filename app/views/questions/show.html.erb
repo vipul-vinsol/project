@@ -25,7 +25,9 @@
   <% end %>
   </ul>
 
-  <div class="answer-form">
-    <%= render 'answer_form', answer: @answer, question: @question %>
-  </div>
+  <% if logged_in? %>
+    <div class="answer-form">
+      <%= render 'answer_form', answer: @answer, question: @question %>
+    </div>
+  <% end %>
 </div>
