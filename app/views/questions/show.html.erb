@@ -1,0 +1,33 @@
+<div class="question-show-page">
+  <div class="title">
+    <%= @question.title %>
+  </div>
+
+  <div class="content">
+    <%= @question.content %>
+  </div>
+
+  <p class="author">Posted by <%= User.find(@question.user_id).name %></p>
+  <p>Attachment :-</p>
+  <p>
+    <% if @question.attachment.attached? %>
+      <%= link_to image_tag(@question.attachment.preview(resize: "360x240")), 
+        rails_blob_path(@question.attachment, disposition: "attachment") %>
+    <% end %>
+  </p>
+
+  <h1><strong>Answers</strong></h1>
+  <hr />
+  
+  <ul class="answers-list">
+  <% @question.answers.each do |answer| %>
+    <li> <%= answer.content %></li>
+  <% end %>
+  </ul>
+
+  <% if logged_in? %>
+    <div class="answer-form">
+      <%= render 'answer_form', answer: @answer, question: @question %>
+    </div>
+  <% end %>
+</div>

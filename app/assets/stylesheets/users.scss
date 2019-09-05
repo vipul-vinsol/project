@@ -1,0 +1,40 @@
+.sign-up {
+  width: 75%;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin: 10px auto;
+  padding: 0px 10px;  
+
+  .avatar_image {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+  }
+
+  .select-interests {
+    width: 60%;
+    height: 10vw;
+    font-size: 18px;
+    padding: 2px 5px;
+    letter-spacing: 1.5px;
+    font-family: 'Courier New', Courier, monospace;
+
+    option {
+      border-bottom: 1px solid #ccc;
+    }
+  }
+}
+
+.user-profile {
+  width: 75%;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin: 10px auto;
+  padding: 0px 10px;
+
+  .avatar_image {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+  }
+}

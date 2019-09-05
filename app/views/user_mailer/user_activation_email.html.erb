@@ -1,0 +1,7 @@
+<h1>Hi <%= @user.name %></h1>
+<p>
+  Welcome to the Quora clone app. You are almost there. One last step, please activate
+  your account by clicking the link below.
+</p>
+
+<%= link_to 'Activate Account', activation_user_url(@user.activation_token) %>

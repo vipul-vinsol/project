@@ -1,0 +1,18 @@
+<div class="ask-a-question">
+  <p>Asking a question is healthy for brain, go ahead and give it a try</p>
+  <h3><%= link_to "Have something in mind ?", new_question_path %></h3>
+</div>
+
+<% @questions.each do |question| %>
+  <div class="question-container">
+    <h3 class="title"><%= link_to question.title, question_path(question.id) %></h3>
+    <p class="author">Posted by <%= User.find(question.user_id).name %></p>
+    <div class="attachment">
+      <% if question.attachment.attached? %>
+        <%= link_to image_tag(question.attachment.preview(resize: "1080x1080")), 
+           question_path(question.id) %> 
+      <% end %>
+    </div>
+    <p class="content"><%= question.content %></p>
+  </div>
+<% end %>
