@@ -28,6 +28,7 @@ class UsersController < ApplicationController
       redirect_to login_path, 
           notice: 'User was successfully created. Please confirm with email to activate user'
     else
+      @all_topics = Topic.all.map { |topic| [topic.name, topic.id] }
       render :new
     end
   end
